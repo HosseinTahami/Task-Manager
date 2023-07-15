@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Category, Tag, Task
 
 # Create your views here.
 def home(request):
@@ -11,4 +12,5 @@ def task_detail(request):
     return render(request, 'task_detail.html')
 
 def tasks(request):
-    return render(request, 'tasks.html')
+    all_tasks = Task.objects.all()
+    return render(request, 'tasks.html', {'tasks': all_tasks})
