@@ -9,3 +9,6 @@ def search(request):
 
 def task_detail(request):
     return render(request, 'task_detail.html')
+
+def tasks(request):
+    return render(request, 'tasks.html')
