@@ -5,3 +5,8 @@ class Category(models.Model):
     name = models.CharField(max_length=225)
     def __str__(self):
         return self.name
+
+class Tag(models.Model):
+    name = models.CharField(max_length=225)
+    def __str__(self):
+        return self.name
