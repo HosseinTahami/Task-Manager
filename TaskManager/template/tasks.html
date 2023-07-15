@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-{% for post in all %}
-<div class="container">
-    <div class="col-12">
+{% for task in tasks %}
+<div class="container mt-3">
+    <div class="col-2 text-center ">
         <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">{{post.title}}</h5>
+            <div class="card-body bg-secondary">
+                <h5 class="card-title">{{task.title}}</h5>
                 <p class="card-text">
-                    {{ tasks.description}}
+                    <strong>due_date:</strong> <br> {{ task.due_date}}
                 </p>
-                <a href='{{ tasks.id }}' style="text-decoration:none" style="text-decoration:none">{{ tasks.title }}</a>
+                <a href='{{ task.id }}' style="text-decoration:none" style="text-decoration:none" class="text-info">
+                    details </a>
             </div>
         </div>
     </div>
