@@ -4,8 +4,16 @@ from django.utils import timezone
 from django.db.models import Q
 
 # Create your views here.
+def main_page(request):
+    return render(request, 'main_page.html')
+
 def home(request):
-    return render(request, 'home.html')
+    all_tasks = Task.objects.all()
+    return render(
+        request,
+        'home.html',
+        {'tasks': all_tasks}
+        )
 
 def search(request):
     return render(

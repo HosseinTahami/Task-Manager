@@ -8,9 +8,10 @@
             <div class="card-body bg-secondary">
                 <h5 class="card-title">{{result.title}}</h5>
                 <p class="card-text">
-                    <strong>due_date:</strong> <br> {{ task.due_date}}
+                    <strong>due_date:</strong> <br> {{ result.due_date}}
                 </p>
-                <a href='{{ result.id }}' style="text-decoration:none" style="text-decoration:none" class="text-info">
+                <a href="{% url 'tasks' %}{{result.id}}" style="text-decoration:none" style="text-decoration:none"
+                    class="text-info">
                     details </a>
             </div>
         </div>
