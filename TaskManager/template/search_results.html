@@ -1,24 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
 {% if searched %}
-{% for result in results %}
 <div class="container mt-3">
-    <div class="col-2 text-center ">
-        <div class="card">
-            <div class="card-body bg-secondary">
-                <h5 class="card-title">{{result.title}}</h5>
-                <p class="card-text">
-                    <strong>due_date:</strong> <br> {{ result.due_date}}
-                </p>
-                <a href="{% url 'tasks' %}{{result.id}}" style="text-decoration:none" style="text-decoration:none"
-                    class="text-info">
-                    details </a>
+    <div class="row">
+        {% for result in results %}
+        <div class="col-4 text-center ">
+            <div class="card">
+                <div class="card-body bg-secondary">
+                    <h5 class="card-title">{{result.title}}</h5>
+                    <p class="card-text">
+                        <strong>due_date:</strong> <br> {{ result.due_date}}
+                    </p>
+                    <a href="{% url 'tasks' %}{{result.id}}" style="text-decoration:none" style="text-decoration:none"
+                        class="text-info">
+                        details </a>
+                </div>
             </div>
         </div>
+        {% endfor %}
     </div>
 </div>
 <br>
-{% endfor %}
+
 {% else %}
 <h1> Forgot to search ...</h1>
 {% endif %}

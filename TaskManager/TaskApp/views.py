@@ -27,8 +27,12 @@ def task_detail(request, task_id):
     now = timezone.now()
     if detail.due_date > now :
         remain = 'Ongoing'
+        detail.status = 'O'
+        detail.save()
     else:
         remain = 'Finished'
+        detail.status = 'F'
+        detail.save()
     tags = detail.tags.all()
     return render(
         request,

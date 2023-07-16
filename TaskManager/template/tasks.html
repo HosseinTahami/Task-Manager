@@ -4,11 +4,13 @@
     <a class="nav-link" href="{% url 'tasks' %}">Category</a>
 </li>
 {% endblock %}
-{% extends 'base.html' %}
 {% block content %}
+<h2 class="text-center"> OnGoing </h2>
+<br>
 <div class="container mt-3">
     <div class="row">
         {% for task in tasks %}
+        {% if task.status == 'O'%}
         <div class="col-4 text-center ">
             <div class="card mt-3">
                 <div class="card-body bg-secondary">
@@ -21,6 +23,30 @@
                 </div>
             </div>
         </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<br>
+<h2 class="text-center"> Finished </h2>
+<br>
+<div class="container mt-3">
+    <div class="row">
+        {% for task in tasks %}
+        {% if task.status == 'F'%}
+        <div class="col-4 text-center ">
+            <div class="card mt-3">
+                <div class="card-body bg-secondary">
+                    <h5 class="card-title">{{task.title}}</h5>
+                    <p class="card-text">
+                        <strong>due_date:</strong> <br> {{ task.due_date}}
+                    </p>
+                    <a href='{{ task.id }}' style="text-decoration:none" style="text-decoration:none" class="text-info">
+                        details </a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
         {% endfor %}
     </div>
 </div>
