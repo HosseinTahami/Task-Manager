@@ -5,11 +5,11 @@
     <div class="row">
         {% for result in results %}
         <div class="col-4 text-center ">
-            <div class="card">
-                <div class="card-body bg-secondary">
-                    <h5 class="card-title">{{result.title}}</h5>
+            <div class="card border-primary mt-3" style="max-width: 18rem;">
+                <h2 class="card-header">{{result.title}}</h2>
+                <div class="card-body">
                     <p class="card-text">
-                        <strong>due_date:</strong> <br> {{ result.due_date}}
+                        <strong>Due Date:</strong> <br> {{ result.due_date}}
                     </p>
                     <a href="{% url 'tasks' %}{{result.id}}" style="text-decoration:none" style="text-decoration:none"
                         class="text-info">

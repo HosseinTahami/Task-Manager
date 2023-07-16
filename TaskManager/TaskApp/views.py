@@ -1,5 +1,5 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Task, Tag
+from django.shortcuts import render
+from .models import Task, Category
 from django.utils import timezone
 from django.db.models import Q
 
@@ -67,3 +67,11 @@ def search_results(request):
         request,
         'search_results.html',
         )
+
+def category(request):
+    categories = Category.objects.all()
+    return render(
+        request,
+        'category.html',
+        {'category' : categories})
+    
