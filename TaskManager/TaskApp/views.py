@@ -21,12 +21,15 @@ def task_detail(request, task_id):
         remain = 'Ongoing'
     else:
         remain = 'Finished'
+    tags = detail.tags.all()
     return render(
         request,
         'task_detail.html',
-        {'detail' : detail ,
-        'remain' : remain}
+        {'detail' : detail,
+        'remain' : remain,
+        'tags' : tags}
         )
+    
 
 def tasks(request):
     all_tasks = Task.objects.all()

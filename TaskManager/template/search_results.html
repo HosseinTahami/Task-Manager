@@ -1,19 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="text-center">
-    <br>
-    <br>
-    <br>
-    <br>
-    {% if searched %}
-    {% for result in results %}
-    <li>
-        <h3><a href="{% url 'task_detail' result.id %}">{{ result.title }}</a></h3>
-        <p>{{ result.description }}</p>
-    </li>
-    {% endfor %}
-    {% else %}
-    <h1> Forgot to search ...</h1>
-    {% endif %}
+{% if searched %}
+{% for result in results %}
+<div class="container mt-3">
+    <div class="col-2 text-center ">
+        <div class="card">
+            <div class="card-body bg-secondary">
+                <h5 class="card-title">{{result.title}}</h5>
+                <p class="card-text">
+                    <strong>due_date:</strong> <br> {{ task.due_date}}
+                </p>
+                <a href='{{ result.id }}' style="text-decoration:none" style="text-decoration:none" class="text-info">
+                    details </a>
+            </div>
+        </div>
+    </div>
 </div>
+<br>
+{% endfor %}
+{% else %}
+<h1> Forgot to search ...</h1>
+{% endif %}
 {% endblock %}
