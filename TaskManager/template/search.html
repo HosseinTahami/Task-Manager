@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Search</h2>
+<form method=POST action="{% url 'search_results' %}">
+    {% csrf_token %}
+    <input type="search" placeholder="Search Title & Tag" arial-label="Search" name="searched">
+    <button class="btn btn-outline-primary" type="submit">Search</button>
+</form>
+{% endblock %}

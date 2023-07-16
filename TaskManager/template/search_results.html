@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="text-center">
+    <br>
+    <br>
+    <br>
+    <br>
+    {% if searched %}
+    {% for result in results %}
+    <li>
+        <h3><a href="{% url 'task_detail' result.id %}">{{ result.title }}</a></h3>
+        <p>{{ result.description }}</p>
+    </li>
+    {% endfor %}
+    {% else %}
+    <h1> Forgot to search ...</h1>
+    {% endif %}
+</div>
+{% endblock %}
