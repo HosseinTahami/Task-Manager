@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="text-center mt-3 p-3">
-    <p><strong>Title:</strong> {{ detail.title }}</p>
-    <p><strong>Description:</strong> {{ detail.description }}</p>
-    <p><strong>Due Date:</strong> {{ detail.due_date }}</p>
-    <p><strong>STATUS:</strong> {{remain}}</p>
-    <p><strong>Tags:</strong>
-        {% for tag in tags %}
-        {{ tag.name }}
-        {% endfor %}
-    </p>
+<div class=" mt-3 p-3">
+    <div class="col-10">
+        <p class="display-3"> {{ detail.title }}</p>
+        <p> {{ detail.description }}</p>
+        <p><strong>Due Date:</strong> {{ detail.due_date }}</p>
+        <p><strong>STATUS:</strong> {{remain}}</p>
+        <p><strong>Tags:</strong>
+            {% for tag in tags %}
+            <span class="badge bg-secondary">{{ tag.name }}</span>
+            {% endfor %}
+        </p>
+    </div>
 </div>
 {%endblock%}
