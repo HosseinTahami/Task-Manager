@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+{% block category %}
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'tasks' %}">Category</a>
+</li>
+{% endblock %}
 {% block content %}
 {% for task in tasks %}
 <div class="container mt-3">
