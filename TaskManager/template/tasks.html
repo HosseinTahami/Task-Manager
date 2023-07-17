@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block category %}
 <li class="nav-item">
-    <a class="nav-link" href="{% url 'category' %}">Category</a>
+    <a class="nav-link text-primary" href="{% url 'category' %}">Category</a>
 </li>
 {% endblock %}
 {% block content %}
 <br>
-<h2 class="text-center"> OnGoing </h2>
+<h2 class=" display-4 text-center"> OnGoing </h2>
 <br>
 <div class="container mt-3">
     <div class="row">
@@ -17,7 +17,7 @@
                 <div class="card-body bg-secondary">
                     <h5 class="card-title">{{task.title}}</h5>
                     <p class="card-text">
-                        <strong>due_date:</strong> <br> {{ task.due_date}}
+                        <strong>Due Date:</strong> <br> {{ task.due_date}}
                     </p>
                     <a href='{{ task.id }}' style="text-decoration:none" style="text-decoration:none" class="text-info">
                         details </a>
@@ -29,7 +29,7 @@
     </div>
 </div>
 <br>
-<h2 class="text-center"> Finished </h2>
+<h2 class="text-center display-4"> Finished </h2>
 <br>
 <div class="container mt-3">
     <div class="row">
@@ -40,7 +40,7 @@
                 <div class="card-body bg-secondary">
                     <h5 class="card-title">{{task.title}}</h5>
                     <p class="card-text">
-                        <strong>due_date:</strong> <br> {{ task.due_date}}
+                        <strong>Due Date:</strong> <br> {{ task.due_date}}
                     </p>
                     <a href='{{ task.id }}' style="text-decoration:none" style="text-decoration:none" class="text-info">
                         details </a>
