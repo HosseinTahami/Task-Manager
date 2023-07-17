@@ -48,7 +48,7 @@ def tasks(request):
     return render(
         request,
         'tasks.html',
-        {'tasks': all_tasks}
+        {'tasks': list(all_tasks)}
         )
 
 def search_results(request):
@@ -73,5 +73,5 @@ def category(request):
     return render(
         request,
         'category.html',
-        {'category' : categories})
+        {'category' : list(categories)})
     
