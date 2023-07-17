@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-3">
+    <div class="row">
+        {% for task in tasks %}
+        <div class="col-4 text-center ">
+            <div class="card border-primary mt-3">
+                <div class="card-header bg-dark text-light">{{task.title}}</div>
+                <div class="card-body bg-secondary">
+                    <p class="card-text">
+                        <strong>due_date:</strong> <br> {{ task.due_date}}
+                    </p>
+                    <a href="{% url 'tasks' %}{{ task.id }}" style="text-decoration:none" style="text-decoration:none"
+                        class="text-info">
+                        details </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<br>
+{% endblock %}
