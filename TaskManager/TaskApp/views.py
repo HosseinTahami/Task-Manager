@@ -74,4 +74,11 @@ def category(request):
         request,
         'category.html',
         {'category' : list(categories)})
-    
+
+def category_detail(request, category_id):
+    category_tasks = Task.objects.filter(id=category_id)
+    return render(
+        request,
+        'category_detail.html',
+        {'tasks': category_tasks}
+        )
