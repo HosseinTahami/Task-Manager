@@ -10,7 +10,7 @@
                     <p class="card-text">
                         <strong>due_date:</strong> <br> {{ task.due_date}}
                     </p>
-                    <a href="{% url 'tasks' %}{{ task.id }}" style="text-decoration:none" style="text-decoration:none"
+                    <a href="{% url 'task_detail' task.id %}" style="text-decoration:none" style="text-decoration:none"
                         class="text-info">
                         details </a>
                 </div>
