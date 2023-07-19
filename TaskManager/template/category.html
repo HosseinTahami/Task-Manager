@@ -3,11 +3,23 @@
 <div class="container mt-3">
     <div class="row">
         {% for cat in category %}
-        <div class="col-4 text-center ">
+        <!--<div class="col-4 text-center ">
             <div class="card mt-3">
                 <div class="card-body bg-secondary">
                     <h5 class="card-title">{{cat.name}}</h5>
                     <a href="{{ cat.id }}">Show all Tasks</a>
+                </div>
+            </div>
+        </div>-->
+        <div class="col-4 text-center ">
+            <div class="card border-primary mt-3" style="max-width: 18rem;">
+                <h2 class="card-header">{{cat.name}}</h2>
+                <div class="card-body">
+                    <a class="text-dark" href="{{ cat.id }}">
+                        <button type="button" class="btn btn-primary">
+                            Show All Tasks
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>
