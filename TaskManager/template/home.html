@@ -4,15 +4,17 @@
     <div class="row">
         {% for task in tasks %}
         <div class="col-4 text-center ">
-            <div class="card border-primary mt-3">
-                <div class="card-header bg-dark text-light">{{task.title}}</div>
-                <div class="card-body bg-secondary">
+            <div class="card border-primary mt-3" style="max-width: 18rem;">
+                <h2 class="card-header">{{task.title}}</h2>
+                <div class="card-body">
                     <p class="card-text">
-                        <strong>due_date:</strong> <br> {{ task.due_date}}
+                        <strong>Due Date:</strong> <br> {{ task.due_date}}
                     </p>
-                    <a href="{% url 'tasks' %}{{ task.id }}" style="text-decoration:none" style="text-decoration:none"
-                        class="text-info">
-                        details </a>
+                    <a class="text-dark" href="{% url 'tasks' %}{{task.id}}">
+                        <button type="button" class="btn btn-primary">
+                            Detail
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

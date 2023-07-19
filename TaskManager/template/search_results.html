@@ -11,9 +11,11 @@
                     <p class="card-text">
                         <strong>Due Date:</strong> <br> {{ result.due_date}}
                     </p>
-                    <a href="{% url 'tasks' %}{{result.id}}" style="text-decoration:none" style="text-decoration:none"
-                        class="text-info">
-                        details </a>
+                    <a class="text-dark" href="{% url 'tasks' %}{{result.id}}">
+                        <button type="button" class="btn btn-primary">
+                            Detail
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>
