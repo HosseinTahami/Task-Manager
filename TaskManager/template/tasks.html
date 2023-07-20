@@ -85,4 +85,63 @@
     </div>
 </div>
 <br>
+<br>
+<br>
+<div>
+    <article class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <h3>Add Task:</h3>
+            <!--<form class=" row gx-4 gx-lg-5 justify-content-center needs-validation" method="GET">
+                <label>Category: </label>
+                <input type="text" label="category" placeholder="category" name="category">
+                <label>Tags: </label>
+                <input type="text" label="tags" placeholder="tags" name="tags">
+                <input class="mt-3" type="submit" name="sub">
+            </form>-->
+            <form class="row g-3" method="POST" action="">
+                {% csrf_token %}
+                <div class="col-md-4">
+                    <label for="validationDefault01" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="validationDefault01" value="" name="title" required>
+                </div>
+                <div>
+                    <label for="validationTextarea" class="form-label">Description</label>
+                    <textarea class="form-control is-invalid" id="validationTextarea"
+                        placeholder="Required example textarea" name="description" required></textarea>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationDefault02" class="form-label">Due Date</label>
+                    <input type="text" class="form-control" id="validationDefault02" value="" name="due_date" required>
+                </div>
+                <div class="col-md-3">
+                    <label for="validationDefault04" class="form-label">State</label>
+                    <select class="form-select" id="validationDefault04" name="status" required>
+                        <option selected disabled></option>
+                        <option value="status_id">O</option>
+                        <option value="status_id">F</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="validationDefault05" class="form-label">Category</label>
+                    <select class="form-select" id="validationDefault05" name="category" required>
+                        {% for cat in category %}
+                        <option value={{cat.id}}>{{cat.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="validationDefault06" class="form-label">Tags</label>
+                    <select class="form-select" id="validationDefault06" name='tags' multiple>
+                        {% for tag in tags %}
+                        <option>{{tag.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit" name="sub">Submit form</button>
+                </div>
+            </form>
+        </div>
+    </article>
+</div>
 {% endblock %}
