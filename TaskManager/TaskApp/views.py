@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Task, Category
+from .models import Task, Category, Tag
 from django.utils import timezone
 from django.db.models import Q
 from datetime import datetime, time
@@ -45,11 +45,33 @@ def task_detail(request, task_id):
     
 
 def tasks(request):
+    if request.method == 'POST':
+        title = request.POST['title']
+        description = request.POST['description']
+        due_date = request.POST['due_date']
+        status = request.POST['status']
+        category = request.POST['category']
+        #category = Category.objects.filter(name=category)
+        tags = request.POST['tags']
+        Task.objects.create(
+            title = title,
+            description = description,
+            due_date = due_date,
+            status = status,
+            category = category,
+            tags = tags
+        )
+    all_tags = Tag.objects.all()
     all_tasks = Task.objects.all()
+    all_category = Category.objects.all()
     return render(
         request,
         'tasks.html',
-        {'tasks': list(all_tasks)}
+        {'tasks': list(all_tasks),
+         'category': all_category,
+         'tags':all_tags,
+         'status': Task.objects.all()
+         }
         )
 
 def search_results(request):
