@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Task, Category
 from django.utils import timezone
 from django.db.models import Q
+from datetime import datetime, time
 
 # Create your views here.
 def main_page(request):
@@ -84,3 +85,8 @@ def category_detail(request, category_id):
         'category_detail.html',
         {'tasks': list(category_tasks)}
         )
+
+def emergency_tasks(request):
+    tmp = datetime.combine(datetime.now(), time.max)
+    tasks = Task.objects.filter(Q(due_date__lt=tmp) & Q(status='O'))
+    return render(request, 'em.html', {'tasks':tasks})
