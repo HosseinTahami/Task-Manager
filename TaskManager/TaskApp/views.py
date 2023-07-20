@@ -64,6 +64,7 @@ def tasks(request):
         for t in tags_list:
             tag_obj = Tag.objects.get(name=t)
             new_task.tags.add(tag_obj)
+            new_task.save()
         
         return redirect('home')
     #---------------------------------
