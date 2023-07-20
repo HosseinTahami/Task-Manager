@@ -106,26 +106,26 @@
                 </div>
                 <div>
                     <label for="validationTextarea" class="form-label">Description</label>
-                    <textarea class="form-control is-invalid" id="validationTextarea"
-                        placeholder="Required example textarea" name="description" required></textarea>
+                    <textarea class="form-control" id="validationTextarea" placeholder="Required example textarea"
+                        name="description" required></textarea>
                 </div>
                 <div class="col-md-4">
                     <label for="validationDefault02" class="form-label">Due Date</label>
-                    <input type="text" class="form-control" id="validationDefault02" value="" name="due_date" required>
+                    <input type="date" class="form-control" id="validationDefault02" value="" name="due_date" required>
                 </div>
                 <div class="col-md-3">
                     <label for="validationDefault04" class="form-label">State</label>
                     <select class="form-select" id="validationDefault04" name="status" required>
                         <option selected disabled></option>
-                        <option value="status_id">O</option>
-                        <option value="status_id">F</option>
+                        <option>O</option>
+                        <option>F</option>
                     </select>
                 </div>
                 <div class="col-md-3">
-                    <label for="validationDefault05" class="form-label">Category</label>
-                    <select class="form-select" id="validationDefault05" name="category" required>
+                    <label for="category" class="form-label">Category</label>
+                    <select class="form-select" id="category" name="category">
                         {% for cat in category %}
-                        <option value={{cat.id}}>{{cat.name}}</option>
+                        <option>{{cat.name}}</option>
                         {% endfor %}
                     </select>
                 </div>

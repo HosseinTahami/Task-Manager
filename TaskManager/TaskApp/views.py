@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Task, Category, Tag
 from django.utils import timezone
 from django.db.models import Q
@@ -51,27 +51,36 @@ def tasks(request):
         due_date = request.POST['due_date']
         status = request.POST['status']
         category = request.POST['category']
-        #category = Category.objects.filter(name=category)
-        tags = request.POST['tags']
-        Task.objects.create(
+        category = Category.objects.get(name=category)
+        tags_list = request.POST.getlist('tags')
+        #print(tags)
+        new_task = Task.objects.create(
             title = title,
             description = description,
             due_date = due_date,
             status = status,
-            category = category,
-            tags = tags
+            category = category
         )
+        for t in tags_list:
+            tag_obj = Tag.objects.get(name=t)
+            new_task.tags.add(tag_obj)
+        
+        return redirect('home')
+    #---------------------------------
+
     all_tags = Tag.objects.all()
     all_tasks = Task.objects.all()
     all_category = Category.objects.all()
+    
+    
     return render(
         request,
         'tasks.html',
         {'tasks': list(all_tasks),
-         'category': all_category,
-         'tags':all_tags,
-         'status': Task.objects.all()
-         }
+        'category': all_category,
+        'tags':all_tags,
+        'status': Task.objects.all()
+        }
         )
 
 def search_results(request):
