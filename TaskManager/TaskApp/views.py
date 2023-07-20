@@ -70,11 +70,17 @@ def search_results(request):
         )
 
 def category(request):
+    if request.GET.get('sub'):
+        cat_name = request.GET.get('name')
+        Category.objects.create(
+            name = cat_name
+        )
     categories = Category.objects.all()
     return render(
         request,
         'category.html',
         {'category' : list(categories)})
+    
 
 def category_detail(request, category_id):
     category_tasks = Task.objects.filter(category__id=category_id)
