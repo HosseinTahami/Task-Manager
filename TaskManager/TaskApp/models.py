@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 # Create your models here.
 class Category(models.Model):
@@ -20,7 +21,8 @@ class Task(models.Model):
     ]
     title = models.CharField(max_length=225)
     description = models.TextField()
-    due_date = models.DateTimeField()
+    default_date = datetime.datetime.today() + datetime.timedelta(days=1)
+    due_date = models.DateTimeField(default=default_date)
     status = models.CharField(
         max_length=1,
         choices=TASK_STATUS_CHOICES,
