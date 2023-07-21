@@ -32,7 +32,8 @@
 <article class="mb-4">
     <div class="container px-4 px-lg-5">
         <h3>Add Category:</h3>
-        <form class=" row gx-4 gx-lg-5 justify-content-center needs-validation" method="POST">
+        <form class=" row gx-4 gx-lg-5 justify-content-center needs-validation" method="POST"
+            enctype="multipart/form-data">
             {% csrf_token %}
             <div class="col-12">
                 <label for="validationDefault01" class="form-label">Category Name:</label>
@@ -40,7 +41,7 @@
             </div>
             <div class="mb-3">
                 <label for="formFile" class="form-label">Default file input example</label>
-                <input class="form-control" type="file" id="formFile" name="cat_image">
+                <input class="form-control" type="file" id="formFile" name="cat_image" accept="image/*">
             </div>
             <div class="col-12 mt-3">
                 <button class="btn btn-primary" type="submit" name="sub">Submit form</button>

@@ -1,13 +1,12 @@
 from django.db import models
 import datetime
-
+from django.conf import settings
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=225)
     img = models.ImageField(
         upload_to = 'images/',
-        default='media/images/cat_default.png',
-        null=True)
+        default='images/cat_default.png')
     def __str__(self):
         return self.name
 
