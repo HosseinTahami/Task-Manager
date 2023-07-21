@@ -35,4 +35,50 @@
     </div>
 </div>
 <br>
+<br>
+<br>
+<br>
+<div>
+    <article class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <h3>Add Task:</h3>
+            <form class="row g-3" method="POST" action="">
+                {% csrf_token %}
+                <div class="col-md-4">
+                    <label for="validationDefault01" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="validationDefault01" value="" name="title" required>
+                </div>
+                <div>
+                    <label for="validationTextarea" class="form-label">Description</label>
+                    <textarea class="form-control" id="validationTextarea" placeholder="Required example textarea"
+                        name="description" required></textarea>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationDefault02" class="form-label">Due Date</label>
+                    <input type="datetime-local" class="form-control" id="validationDefault02" value="" name="due_date"
+                        required>
+                </div>
+                <div class="col-md-3">
+                    <label for="validationDefault04" class="form-label">State</label>
+                    <select class="form-select" id="validationDefault04" name="status" required>
+                        <option selected disabled></option>
+                        <option>O</option>
+                        <option>F</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="validationDefault06" class="form-label">Tags</label>
+                    <select class="form-select" id="validationDefault06" name='tags' multiple>
+                        {% for tag in tags %}
+                        <option>{{tag.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit" name="sub">Submit form</button>
+                </div>
+            </form>
+        </div>
+    </article>
+</div>
 {% endblock %}

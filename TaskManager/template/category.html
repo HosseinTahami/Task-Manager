@@ -32,9 +32,14 @@
     <div class="container px-4 px-lg-5">
         <h3>Add Category:</h3>
         <form class=" row gx-4 gx-lg-5 justify-content-center needs-validation" method="GET">
-            <label>category name: </label>
-            <input type=" text" label="name" placeholder="name" name="name">
-            <input class="mt-3" type="submit" name="sub">
+            <div class="col-12">
+                <label for="validationDefault01" class="form-label">Category Name:</label>
+                <input type="text" class="form-control" id="validationDefault01" value="" name="name" required>
+            </div>
+            <br>
+            <div class="col-12 mt-3">
+                <button class="btn btn-primary" type="submit" name="sub">Submit form</button>
+            </div>
         </form>
     </div>
 </article>
