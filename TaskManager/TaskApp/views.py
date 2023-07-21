@@ -147,47 +147,66 @@ def category(request):
 def category_detail(request, category_id):
     
     if request.method == 'POST':
-        if request.POST.get('sub') :
+        if 'sub' in request.POST :
             title = request.POST['title']
             description = request.POST['description']
             due_date = request.POST['due_date']
             status = request.POST['status']
             category = Category.objects.get(id=category_id)
             tags_list = request.POST.getlist('tags')
-            task_file = request.FILES.get('task_file')
-            new_task = Task.objects.create(
-                title = title,
-                description = description,
-                due_date = due_date,
-                status = status,
-                category = category,
-                file = task_file
-            )
-            for t in tags_list:
-                tag_obj = Tag.objects.get(name=t)
-                new_task.tags.add(tag_obj)
-                new_task.save()
+            if tags_list:
+                task_file = request.FILES.get('task_file')
+                new_task = Task.objects.create(
+                    title = title,
+                    description = description,
+                    due_date = due_date,
+                    status = status,
+                    category = category,
+                    file = task_file
+                )
+                for t in tags_list:
+                    tag_obj = Tag.objects.get(name=t)
+                    new_task.tags.add(tag_obj)
+                    new_task.save()
+                    
+                return redirect('category')
+            else:
+                new_task = Task.objects.create(
+                    title = title,
+                    description = description,
+                    due_date = due_date,
+                    status = status,
+                    category = category
+                )
+                for t in tags_list:
+                    tag_obj = Tag.objects.get(name=t)
+                    new_task.tags.add(tag_obj)
+                    new_task.save()
+                return redirect('category')
                 
-            return redirect('category')
         
-        elif request.POST.get('UPDATE'):
-            new_name = request.POST['new_name']
-            cat = request.objects.get(id=category_id)
+        elif 'UPDATE' in request.POST:
+            new_name = request.POST.get('new_name')
+            print(new_name)
+            cat = Category.objects.get(id=category_id)
             cat.name = new_name
+            cat.save()
             return redirect('category')
-    
+
     # ---------------------------------
     if request.method == 'GET':
         all_tags = Tag.objects.all()
         all_category = Category.objects.all()
         category_tasks = Task.objects.filter(category__id=category_id)
+        c = Category.objects.get(id=category_id)
         return render(
             request,
             'category_detail.html',
             {'tasks': list(category_tasks),
             'category': all_category,
             'tags':all_tags,
-            'status': Task.objects.all()
+            'status': Task.objects.all(),
+            'my_cat' : c
             }
             )
 

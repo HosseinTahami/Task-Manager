@@ -76,7 +76,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Default file input example</label>
-                    <input class="form-control" type="file" id="formFile" name="task_file">
+                    <input class="form-control" type="file" id="formFile" name="task_file"
+                        enctype="multipart/form-data">
                 </div>
                 <div class="col-12">
                     <button class="btn btn-primary" type="submit" name="sub">ADD</button>
@@ -85,15 +86,22 @@
         </div>
     </article>
 </div>
-
+<br>
+<br>
+<br>
 <div>
     <article class="mb-4">
         <div class="container px-4 px-lg-5">
             <h3>Change Category Name:</h3>
-            <form class="row g-3" method="POST">
+            <form class="row g-3" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Default file input example</label>
-                    <input class="form-control" type="text" id="formFile" name="new_name">
+                    <input class="form-control" value={{my_cat}} type="text" id="formFile" name="new_name">
+                </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Default file input example</label>
+                    <input class="form-control" type="file" id="formFile" name="task_file">
                 </div>
                 <div class="col-12">
                     <button class="btn btn-primary" type="submit" name="UPDATE">Submit form</button>

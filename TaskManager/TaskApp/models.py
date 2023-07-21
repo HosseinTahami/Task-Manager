@@ -38,6 +38,6 @@ class Task(models.Model):
         )
     tags = models.ManyToManyField(Tag)
     file = models.FileField(
-        upload_to='TaskFiles/',
-        default='/TaskFiles/task_default.png'
+        upload_to='images/',
+        default='/images/task_default.png'
         )
