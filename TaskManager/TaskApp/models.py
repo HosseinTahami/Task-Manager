@@ -6,7 +6,7 @@ class Category(models.Model):
     name = models.CharField(max_length=225)
     img = models.ImageField(
         upload_to = 'images/',
-        default='cat_default.png',
+        default='media/images/cat_default.png',
         null=True)
     def __str__(self):
         return self.name
@@ -39,5 +39,5 @@ class Task(models.Model):
     tags = models.ManyToManyField(Tag)
     file = models.FileField(
         upload_to='TaskFiles/',
-        default='task_default.png',
+        default='media/TaskFiles/task_default.png',
         blank=True)
