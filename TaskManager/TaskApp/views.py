@@ -68,13 +68,15 @@ def tasks(request):
         category = request.POST['category']
         category = Category.objects.get(name=category)
         tags_list = request.POST.getlist('tags')
+        task_file = request.POST['task_file']
         #print(tags)
         new_task = Task.objects.create(
             title = title,
             description = description,
             due_date = due_date,
             status = status,
-            category = category
+            category = category,
+            file = task_file
         )
         for t in tags_list:
             tag_obj = Tag.objects.get(name=t)
@@ -144,12 +146,14 @@ def category_detail(request, category_id):
         status = request.POST['status']
         category = Category.objects.get(id=category_id)
         tags_list = request.POST.getlist('tags')
+        task_file = request.POST['task_file']
         new_task = Task.objects.create(
             title = title,
             description = description,
             due_date = due_date,
             status = status,
-            category = category
+            category = category,
+            file = task_file
         )
         for t in tags_list:
             tag_obj = Tag.objects.get(name=t)
