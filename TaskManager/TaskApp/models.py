@@ -4,6 +4,10 @@ import datetime
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=225)
+    img = models.ImageField(
+        upload_to = 'images/',
+        default='cat_default.png',
+        null=True)
     def __str__(self):
         return self.name
 
