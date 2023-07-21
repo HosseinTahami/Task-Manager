@@ -24,24 +24,39 @@ def search(request):
 
 
 def task_detail(request, task_id):
-    detail = Task.objects.get(id = task_id)
-    now = timezone.now()
-    if detail.due_date > now :
-        remain = 'Ongoing'
-        detail.status = 'O'
-        detail.save()
-    else:
-        remain = 'Finished'
-        detail.status = 'F'
-        detail.save()
-    tags = detail.tags.all()
-    return render(
-        request,
-        'task_detail.html',
-        {'detail' : detail,
-        'remain' : remain,
-        'tags' : tags}
-        )
+    if request.method == "POST":
+        tag_name = request.POST['name']
+        tag_list = Tag.objects.all()
+        tag_list = list(tag_list)
+        try:
+            Tag.objects.get(name=tag_name)
+        except:
+            t = Tag.objects.create(
+                name = tag_name
+                )
+            t.save()
+            my_task = Task.objects.get(id = task_id)
+            my_task.tags.add(t)
+        return redirect('tasks')
+    if request.method == "GET":
+        detail = Task.objects.get(id = task_id)
+        now = timezone.now()
+        if detail.due_date > now :
+            remain = 'Ongoing'
+            detail.status = 'O'
+            detail.save()
+        else:
+            remain = 'Finished'
+            detail.status = 'F'
+            detail.save()
+        tags = detail.tags.all()
+        return render(
+            request,
+            'task_detail.html',
+            {'detail' : detail,
+            'remain' : remain,
+            'tags' : tags}
+            )
     
 
 def tasks(request):
@@ -87,7 +102,9 @@ def tasks(request):
 def search_results(request):
     if request.method == "POST" :
         searched = request.POST['searched']
-        tasks = Task.objects.filter(Q(title__icontains=searched) | Q(tags__name__icontains=searched)).distinct()
+        tasks = Task.objects.filter(
+            Q(title__icontains=searched) | Q(tags__name__icontains=searched)
+            ).distinct()
         print(tasks)
         return render(
             request,

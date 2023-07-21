@@ -14,4 +14,20 @@
         </p>
     </div>
 </div>
+<article class="mb-4 mt-3">
+    <div class="container px-4 px-lg-5">
+        <h3>Add Tag:</h3>
+        <form class=" row gx-4 gx-lg-5 justify-content-center needs-validation" method="POST">
+            {% csrf_token %}
+            <div class="col-12">
+                <label for="validationDefault01" class="form-label">Tag Name:</label>
+                <input type="text" class="form-control" id="validationDefault01" value="" name="name" required>
+            </div>
+            <br>
+            <div class="col-12 mt-3">
+                <button class="btn btn-primary" type="submit" name="sub">Submit form</button>
+            </div>
+        </form>
+    </div>
+</article>
 {%endblock%}
