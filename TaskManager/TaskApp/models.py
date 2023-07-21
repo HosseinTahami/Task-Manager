@@ -37,3 +37,7 @@ class Task(models.Model):
         on_delete=models.CASCADE
         )
     tags = models.ManyToManyField(Tag)
+    file = models.FileField(
+        upload_to='TaskFiles/',
+        default='task_default.png',
+        blank=True)
