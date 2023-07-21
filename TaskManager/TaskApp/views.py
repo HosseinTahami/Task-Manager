@@ -122,12 +122,18 @@ def search_results(request):
 def category(request):
     if request.method == "POST":
         cat_name = request.POST['name']
-        cat_file = request.FILES['cat_image']
-        Category.objects.create(
-            name = cat_name,
-            img = cat_file
-        )
-        return redirect('category')
+        cat_file = request.FILES.get('cat_image')
+        if cat_file:
+            Category.objects.create(
+                name = cat_name,
+                img = cat_file
+            )
+            return redirect('category')
+        else:
+            Category.objects.create(
+                name = cat_name,
+            )
+            return redirect('category')
     
     if request.method == "GET":
         categories = Category.objects.all()
