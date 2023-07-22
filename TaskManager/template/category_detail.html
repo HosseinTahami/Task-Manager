@@ -42,7 +42,7 @@
     <article class="mb-4">
         <div class="container px-4 px-lg-5">
             <h3>Add Task:</h3>
-            <form class="row g-3" method="POST" action="">
+            <form class="row g-3" method="POST" action="" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="col-md-4">
                     <label for="validationDefault01" class="form-label">Title</label>
