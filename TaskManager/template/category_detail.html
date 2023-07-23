@@ -92,7 +92,7 @@
 <div>
     <article class="mb-4">
         <div class="container px-4 px-lg-5">
-            <h3>Change Category Name:</h3>
+            <h3>Change Category Details:</h3>
             <form class="row g-3" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="mb-3">
@@ -101,7 +101,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Default file input example</label>
-                    <input class="form-control" type="file" id="formFile" name="task_file">
+                    <input class="form-control" type="file" id="formFile" name="new_image">
                 </div>
                 <div class="col-12">
                     <button class="btn btn-primary" type="submit" name="UPDATE">Submit form</button>
