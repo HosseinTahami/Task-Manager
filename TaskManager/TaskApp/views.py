@@ -187,6 +187,7 @@ def category_detail(request, category_id):
         
         elif 'UPDATE' in request.POST:
             new_name = request.POST.get('new_name')
+            new_img = request.FILES.get('new_img')
             print(new_name)
             cat = Category.objects.get(id=category_id)
             cat.name = new_name
