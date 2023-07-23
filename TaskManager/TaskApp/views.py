@@ -187,10 +187,11 @@ def category_detail(request, category_id):
         
         elif 'UPDATE' in request.POST:
             new_name = request.POST.get('new_name')
-            new_img = request.FILES.get('new_img')
+            new_img = request.FILES.get('new_image')
             print(new_name)
             cat = Category.objects.get(id=category_id)
             cat.name = new_name
+            cat.img = new_img
             cat.save()
             return redirect('category')
 
