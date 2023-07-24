@@ -3,6 +3,9 @@ from .models import Task, Category, Tag
 from django.utils import timezone
 from django.db.models import Q
 from datetime import datetime, time
+from django.core.files import File
+from django.conf import settings
+import os
 
 # Create your views here.
 def main_page(request):
@@ -69,6 +72,10 @@ def tasks(request):
         category = Category.objects.get(name=category)
         tags_list = request.POST.getlist('tags')
         task_file = request.FILES.get('task_file')
+        # if not task_file:
+        #     default_image_path = os.path.join(settings.MEDIA_ROOT, 'task_default.png')
+        #     with open(default_image_path, 'rb') as f:
+        #         task_file = File(f, name='task_default.png')
         new_task = Task.objects.create(
             title = title,
             description = description,
@@ -83,7 +90,6 @@ def tasks(request):
             new_task.save()
     
         return redirect('home')
-
     #---------------------------------
 
     all_tags = Tag.objects.all()

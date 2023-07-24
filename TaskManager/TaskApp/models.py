@@ -37,7 +37,13 @@ class Task(models.Model):
         on_delete=models.CASCADE
         )
     tags = models.ManyToManyField(Tag)
-    file = models.FileField(
-        upload_to='images/',
-        default='/images/task_default.png'
-        )
+    # file = models.FileField(
+    #     upload_to='images/',
+    #     default='task_default.png'
+    #     )
+    file = models.FileField(upload_to='images/', blank=True)
+
+    # def save(self, *args, **kwargs):
+    #     if not self.file:
+    #         self.file = 'images/task_default.png'
+    #     super().save(*args, **kwargs)
