@@ -41,9 +41,12 @@ class Task(models.Model):
     #     upload_to='images/',
     #     default='task_default.png'
     #     )
-    file = models.FileField(upload_to='images/', blank=True)
+    file = models.FileField(
+        upload_to='images/',
+        blank=True
+        )
 
-    # def save(self, *args, **kwargs):
-    #     if not self.file:
-    #         self.file = 'images/task_default.png'
-    #     super().save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        if not self.file:
+            self.file = 'images/task_default.png'
+        super().save(*args, **kwargs)
