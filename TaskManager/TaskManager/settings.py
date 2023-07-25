@@ -38,10 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'TaskApp',
-    'authuser',
 ]
 
-AUTH_USER_MODEL = 'authuser.User'
 
 
 MIDDLEWARE = [
