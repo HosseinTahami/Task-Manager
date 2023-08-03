@@ -1,7 +1,7 @@
 from django.db import models
 import datetime
 from django.conf import settings
-from accounts.models import User
+from accounts.models import CustomUser
 
 # Create your models here.
 class Category(models.Model):
@@ -48,7 +48,7 @@ class Task(models.Model):
         blank=True
         )
     user = models.ForeignKey(
-        User,
+        CustomUser,
         on_delete = models.CASCADE
     )
 
