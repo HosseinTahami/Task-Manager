@@ -1,6 +1,8 @@
 from django.db import models
 import datetime
 from django.conf import settings
+from accounts.models import User
+
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=225)
@@ -45,6 +47,10 @@ class Task(models.Model):
         upload_to='images/',
         blank=True
         )
+    user = models.ForeignKey(
+        User,
+        on_delete = models.CASCADE
+    )
 
     def save(self, *args, **kwargs):
         if not self.file:
