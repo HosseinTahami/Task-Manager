@@ -1,6 +1,6 @@
 from django import forms
 from .models import CustomUser
-#from django.core.exceptions import ValidationError
+from django.core.exceptions import ValidationError
 #from django.contrib.auth.forms import ReadOnlyPasswordHashField
 #from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
@@ -18,7 +18,10 @@ class CustomUserCreationForm(forms.ModelForm):
         model = CustomUser
         fields = ('username', 'email')
 
-
+    def clean_confirm_password(self):
+        cd = self.cleaned_data
+        if cd['password'] and cd['confirm_password'] and cd['password'] != cd['confirm_password']:
+            return ValidationError('Passwords do not match.')
 
 
 
