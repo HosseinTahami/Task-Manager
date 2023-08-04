@@ -14,7 +14,7 @@
     <nav class="navbar  sticky-top navbar-expand-lg bg-dark py-4">
         <div class="container-fluid text-primary">
             <i class="bi bi-ui-checks fs-3"></i>
-            <a class="navbar-brand px-2 text-light fs-2" href="{% url 'main_page' %}">Task
+            <a class="navbar-brand px-2 text-light fs-2" href="{% url 'TaskApp:main_page' %}">Task
                 Manager</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,25 +23,28 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav text-light">
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{% url 'home' %}">Home</a>
+                        <a class="nav-link text-light" href="{% url 'TaskApp:home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{% url 'tasks' %}">Tasks</a>
+                        <a class="nav-link text-light" href="{% url 'TaskApp:tasks' %}">Tasks</a>
                     </li>
                     {% block category %}
                     {% endblock %}
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{% url 'search' %}">Search</a>
+                        <a class="nav-link text-light" href="{% url 'TaskApp:search' %}">Search</a>
+                    </li>
+                    {% if request.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{% url 'TaskApp:search' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{% url 'TaskApp:search' %}">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{% url 'search' %}">Logout</a>
+                        <a class="nav-link text-light" href="{% url 'TaskApp:search' %}">Login</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="{% url 'search' %}">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="{% url 'search' %}">Login</a>
-                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
