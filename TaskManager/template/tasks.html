@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block category %}
 <li class="nav-item">
-    <a class="nav-link text-primary" href="{% url 'category' %}">Category</a>
+    <a class="nav-link text-primary" href="{% url 'TaskApp:category' %}">Category</a>
 </li>
 {% endblock %}
 {% block content %}
@@ -31,7 +31,7 @@
                     <p class="card-text">
                         <strong>Due Date:</strong> <br> {{ task.due_date}}
                     </p>
-                    <a class="text-dark" href="{% url 'tasks' %}{{task.id}}">
+                    <a class="text-dark" href="{% url 'TaskApp:tasks' %}{{task.id}}">
                         <button type="button" class="btn btn-primary">
                             Detail
                         </button>
@@ -72,7 +72,7 @@
                     <p class="card-text">
                         <strong>Due Date:</strong> <br> {{ task.due_date}}
                     </p>
-                    <a class="text-dark" href="{% url 'tasks' %}{{task.id}}">
+                    <a class="text-dark" href="{% url 'TaskApp:tasks' %}{{task.id}}">
                         <button type="button" class="btn btn-primary">
                             Detail
                         </button>

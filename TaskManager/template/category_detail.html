@@ -23,7 +23,7 @@
                     <p class="card-text">
                         <strong>Due Date:</strong> <br> {{ task.due_date}}
                     </p>
-                    <a class="text-dark" href="{% url 'tasks' %}{{task.id}}">
+                    <a class="text-dark" href="{% url 'TaskApp:tasks' %}{{task.id}}">
                         <button type="button" class="btn btn-primary">
                             Detail
                         </button>
