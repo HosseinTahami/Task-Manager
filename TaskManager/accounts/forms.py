@@ -1,5 +1,5 @@
 from django import forms
-from .models import User
+from .models import CustomUser
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
