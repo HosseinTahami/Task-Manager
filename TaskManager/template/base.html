@@ -35,14 +35,14 @@
                     </li>
                     {% if request.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{% url 'TaskApp:search' %}">Logout</a>
+                        <a class="nav-link text-light" href="{% url 'accounts:logout' %}">Logout</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{% url 'TaskApp:search' %}">Register</a>
+                        <a class="nav-link text-light" href="{% url 'accounts:register' %}">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{% url 'TaskApp:search' %}">Login</a>
+                        <a class="nav-link text-light" href="{% url 'accounts:login' %}">Login</a>
                     </li>
                     {% endif %}
                 </ul>

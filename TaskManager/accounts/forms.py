@@ -2,7 +2,7 @@ from django import forms
 from .models import CustomUser
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
-#from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+
 
 
 class CustomUserCreationForm(forms.ModelForm):
@@ -47,7 +47,26 @@ class CustomUserChangeForm(forms.ModelForm):
 
 
 
+class CustomUserLoginForm(forms.Form):
 
+    username = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'class' : 'form-control',
+                'placeholder' : 'Username or Email',
+                'label' : 'Username or Email'
+            }
+        )
+    )
+    
+    password = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                'class' : 'form-control',
+                'placeholder' : 'Password',
+            }
+        )
+    )
 
 
 
