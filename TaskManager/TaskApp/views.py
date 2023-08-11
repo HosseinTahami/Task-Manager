@@ -186,7 +186,6 @@ def category_detail(request, category_id):
             cat.save()
             return redirect("category")
 
-    # ---------------------------------
     if request.method == "GET":
         all_tags = Tag.objects.all()
         all_category = Category.objects.all()
