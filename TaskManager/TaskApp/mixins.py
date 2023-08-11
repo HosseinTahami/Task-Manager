@@ -5,7 +5,10 @@ from django.core.exceptions import PermissionDenied
 
 class TodoOwnerRequiredMixin:
     def dispatch(self, request, *args, **kwargs):
-        task = Task.objects.get(id=kwargs["task_id"])
-        if not task.user == request.user:
-            raise PermissionDenied
-        return super().dispatch(request, *args, **kwargs)
+        if kwargs.get("pk"):
+            todo = Task.objects.get(id=kwargs["todo_id"])
+            if not todo.user == request.user:
+                raise PermissionDenied
+            else:
+                self.todos = Task.objects.filter(user=request.user)
+            return super().dispatch(request, *args, **kwargs)

@@ -57,7 +57,7 @@ class TaskDetail(TodoOwnerRequiredMixin, View):
         )
 
 
-class Tasks(View):
+class Tasks(TodoOwnerRequiredMixin, View):
     def post(self, request):
         title = request.POST["title"]
         description = request.POST["description"]
