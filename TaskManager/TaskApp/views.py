@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Task, Category, Tag
+from accounts.models import CustomUser
 from django.utils import timezone
 from django.db.models import Q
 from datetime import datetime, time
