@@ -64,34 +64,9 @@ class CustomUserLoginForm(forms.Form):
 
 
 class CustomUserChangeForm(forms.Form):
-    first_name = forms.CharField(
-        widget=forms.TextInput(
-            attrs={
-                "class": "form-control",
-                "placeholder": "First Name",
-                "label": "First Name",
-            }
-        )
-    )
-    last_name = forms.CharField(
-        widget=forms.TextInput(
-            attrs={
-                "class": "form-control",
-                "placeholder": "Last Name",
-                "label": "Last Name",
-            }
-        )
-    )
-
-    phone_number = forms.CharField(
-        widget=forms.TextInput(
-            attrs={
-                "class": "form-control",
-                "placeholder": "Phone Number",
-                "label": "Phone Number",
-            }
-        )
-    )
+    class Meta:
+        model = CustomUser
+        fields = ("email", "first_name", "last_name", "phone_number", "photo")
 
 
 # class CustomUserCreateForm(UserCreationForm):
