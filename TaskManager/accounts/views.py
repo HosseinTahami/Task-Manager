@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from .forms import CustomUserCreationForm, CustomUserLoginForm
+from .forms import CustomUserCreationForm, CustomUserLoginForm, CustomUserChangeForm
 from .models import CustomUser
 from django.contrib.auth import authenticate, login, logout
 
@@ -67,4 +67,5 @@ class ProfileView(View):
         return render(request, "profile.html", {"user": user})
 
     def post(self, request):
-        return render(request, "profile.html")
+        form = CustomUserChangeForm(request.POST)
+        return render(request, "profile.html", {"form": form})
