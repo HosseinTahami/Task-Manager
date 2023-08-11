@@ -24,7 +24,7 @@ def search(request):
     )
 
 
-class TaskDetail(View, TodoOwnerRequiredMixin):
+class TaskDetail(TodoOwnerRequiredMixin, View):
     def post(self, request, task_id):
         tag_name = request.POST["name"]
         tag_list = Tag.objects.all()
@@ -57,8 +57,8 @@ class TaskDetail(View, TodoOwnerRequiredMixin):
         )
 
 
-def tasks(request):
-    if request.method == "POST":
+class Tasks(View):
+    def post(self, request):
         title = request.POST["title"]
         description = request.POST["description"]
         due_date = request.POST["due_date"]
@@ -85,22 +85,21 @@ def tasks(request):
             new_task.save()
 
         return redirect("home")
-    # ---------------------------------
 
-    all_tags = Tag.objects.all()
-    all_tasks = Task.objects.all()
-    all_category = Category.objects.all()
-
-    return render(
-        request,
-        "tasks.html",
-        {
-            "tasks": list(all_tasks),
-            "category": all_category,
-            "tags": all_tags,
-            "status": Task.objects.all(),
-        },
-    )
+    def get(self, request):
+        all_tags = Tag.objects.all()
+        all_tasks = Task.objects.all()
+        all_category = Category.objects.all()
+        return render(
+            request,
+            "tasks.html",
+            {
+                "tasks": list(all_tasks),
+                "category": all_category,
+                "tags": all_tags,
+                "status": Task.objects.all(),
+            },
+        )
 
 
 def search_results(request):
