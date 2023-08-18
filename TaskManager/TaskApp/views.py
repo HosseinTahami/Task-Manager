@@ -1,3 +1,5 @@
+from typing import Any
+from django.db import models
 from django.shortcuts import render, redirect
 from .models import Task, Category, Tag
 from accounts.models import CustomUser
@@ -6,16 +8,14 @@ from django.db.models import Q
 from datetime import datetime, time
 from django.views import View
 from .mixins import TodoOwnerRequiredMixin
-from django.views.generic import ListView
+from django.views.generic import (
+    ListView,
+    DetailView,
+)
 
 
 def main_page(request):
     return render(request, "main_page.html")
-
-
-# def home(request):
-#     all_tasks = Task.objects.all()
-#     return render(request, "home.html", {"tasks": all_tasks})
 
 
 class Home(ListView):
@@ -31,37 +31,44 @@ def search(request):
     )
 
 
-class TaskDetail(TodoOwnerRequiredMixin, View):
-    def post(self, request, task_id):
-        tag_name = request.POST["name"]
-        tag_list = Tag.objects.all()
-        tag_list = list(tag_list)
-        try:
-            Tag.objects.get(name=tag_name)
-        except:
-            t = Tag.objects.create(name=tag_name)
-            t.save()
-            my_task = Task.objects.get(id=task_id)
-            my_task.tags.add(t)
-        return redirect("tasks")
+class TaskDetail(DetailView):
+    template_name = "task_detail.html"
+    model = Task
+    context_object_name = "tasks"
+    pk_url_kwarg = "task_id"
 
-    def get(self, request, task_id):
-        detail = Task.objects.get(id=task_id)
-        now = timezone.now()
-        if detail.due_date > now:
-            remain = "Ongoing"
-            detail.status = "O"
-            detail.save()
-        else:
-            remain = "Finished"
-            detail.status = "F"
-            detail.save()
-        tags = detail.tags.all()
-        return render(
-            request,
-            "task_detail.html",
-            {"detail": detail, "remain": remain, "tags": tags},
-        )
+
+# class TaskDetail(TodoOwnerRequiredMixin, View):
+#     def post(self, request, task_id):
+#         tag_name = request.POST["name"]
+#         tag_list = Tag.objects.all()
+#         tag_list = list(tag_list)
+#         try:
+#             Tag.objects.get(name=tag_name)
+#         except:
+#             t = Tag.objects.create(name=tag_name)
+#             t.save()
+#             my_task = Task.objects.get(id=task_id)
+#             my_task.tags.add(t)
+#         return redirect("tasks")
+
+#     def get(self, request, task_id):
+#         detail = Task.objects.get(id=task_id)
+#         now = timezone.now()
+#         if detail.due_date > now:
+#             remain = "Ongoing"
+#             detail.status = "O"
+#             detail.save()
+#         else:
+#             remain = "Finished"
+#             detail.status = "F"
+#             detail.save()
+#         tags = detail.tags.all()
+#         return render(
+#             request,
+#             "task_detail.html",
+#             {"detail": detail, "remain": remain, "tags": tags},
+#         )
 
 
 class Tasks(TodoOwnerRequiredMixin, View):
