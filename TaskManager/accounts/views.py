@@ -3,35 +3,42 @@ from django.views import View
 from .forms import CustomUserCreationForm, CustomUserLoginForm, CustomUserChangeForm
 from .models import CustomUser
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.views import LoginView as LV
+from django.urls import reverse_lazy
 
 # Create your views here.
 
 
-class LoginView(View):
-    form_class = CustomUserLoginForm
+class LoginView(LV):
+    next_page = reverse_lazy("TaskApp:home")
     template_name = "login.html"
 
-    def dispatch(self, request, *args, **kwargs):
-        if request.user.is_authenticated:
-            return redirect("TaskApp:home")
-        return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request):
-        form = self.form_class()
-        return render(request, self.template_name, {"form": form})
+# class LoginView(View):
+#     form_class = CustomUserLoginForm
+#     template_name = "login.html"
 
-    def post(self, request):
-        form = self.form_class(request.POST)
+#     def dispatch(self, request, *args, **kwargs):
+#         if request.user.is_authenticated:
+#             return redirect("TaskApp:home")
+#         return super().dispatch(request, *args, **kwargs)
 
-        if form.is_valid:
-            cd = form.cleaned_data
-            user = authenticate(
-                request, username=cd["username"], password=cd["password"]
-            )
-            if user is not None:
-                login(request, user)
-                return redirect("TaskApp:home")
-        return render(request, self.template_name, {"form": form})
+#     def get(self, request):
+#         form = self.form_class()
+#         return render(request, self.template_name, {"form": form})
+
+#     def post(self, request):
+#         form = self.form_class(request.POST)
+
+#         if form.is_valid:
+#             cd = form.cleaned_data
+#             user = authenticate(
+#                 request, username=cd["username"], password=cd["password"]
+#             )
+#             if user is not None:
+#                 login(request, user)
+#                 return redirect("TaskApp:home")
+#         return render(request, self.template_name, {"form": form})
 
 
 class RegisterView(View):
