@@ -9,7 +9,14 @@ from django.db.models import Q
 from datetime import datetime, time
 from django.views import View
 from .mixins import TodoOwnerRequiredMixin
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    FormView,
+)
+from .forms import CategoryForm
 
 
 def main_page(request):
@@ -252,3 +259,16 @@ class UpdateTaskView(UpdateView):
     template_name = "update_task.html"
     success_url = reverse_lazy("TaskApp:home")
     pk_url_kwarg = "task_id"
+
+
+class CreateCategoryWithForm(FormView):
+    form_class = CategoryForm
+    template_name = "create_category.html"
+    success_url = reverse_lazy("TaskApp:home")
+
+    def form_valid(self, form):
+        self._category_create(form.cleaned_data)
+        return super().form_valid(form)
+
+    def _category_create(self, data):
+        Category.objects.create(name=data["name"], img=data["img"])
