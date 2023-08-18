@@ -15,6 +15,13 @@ urlpatterns = [
     path("emergency/", views.emergency_tasks, name="em"),
     path("create_task/", views.CreateTaskView.as_view(), name="create_task"),
     path(
-        "update_task/<int:task_id>", views.UpdateTaskView.as_view(), name="update_task"
+        "update_task/<int:task_id>",
+        views.UpdateTaskView.as_view(),
+        name="update_task",
+    ),
+    path(
+        "create_category/",
+        views.CreateCategoryWithForm.as_view(),
+        name="create_category",
     ),
 ]
