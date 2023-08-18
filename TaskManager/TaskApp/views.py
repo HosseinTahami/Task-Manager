@@ -9,7 +9,7 @@ from django.db.models import Q
 from datetime import datetime, time
 from django.views import View
 from .mixins import TodoOwnerRequiredMixin
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 
 def main_page(request):
@@ -235,11 +235,20 @@ class CreateTaskView(CreateView):
     model = Task
     fields = "__all__"
     template_name = "create_task.html"
-    success_url = reverse_lazy("home")
+    success_url = reverse_lazy("TaskApp:home")
 
 
 class Tasks(ListView):
     model = Task
     context_object_name = "tasks"
     template_name = "tasks.html"
+    pk_url_kwarg = "task_id"
+
+
+class UpdateTaskView(UpdateView):
+    model = Task
+    fields = "__all__"
+    context_object_name = "task"
+    template_name = "update_task.html"
+    success_url = reverse_lazy("TaskApp:home")
     pk_url_kwarg = "task_id"
