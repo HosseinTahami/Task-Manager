@@ -13,4 +13,5 @@ urlpatterns = [
     path("category/", views.category, name="category"),
     path("category/<int:category_id>", views.category_detail, name="category_detail"),
     path("emergency/", views.emergency_tasks, name="em"),
+    path("create_task/", views.CreateTaskView.as_view(), name="create_task"),
 ]
