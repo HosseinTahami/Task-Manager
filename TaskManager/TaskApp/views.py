@@ -6,16 +6,22 @@ from django.db.models import Q
 from datetime import datetime, time
 from django.views import View
 from .mixins import TodoOwnerRequiredMixin
+from django.views.generic import ListView
 
 
-# Create your views here.
 def main_page(request):
     return render(request, "main_page.html")
 
 
-def home(request):
-    all_tasks = Task.objects.all()
-    return render(request, "home.html", {"tasks": all_tasks})
+# def home(request):
+#     all_tasks = Task.objects.all()
+#     return render(request, "home.html", {"tasks": all_tasks})
+
+
+class Home(ListView):
+    model = Task
+    context_object_name = "tasks"
+    template_name = "home.html"
 
 
 def search(request):

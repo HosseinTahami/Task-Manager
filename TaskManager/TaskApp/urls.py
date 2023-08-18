@@ -5,7 +5,7 @@ app_name = "TaskApp"
 
 urlpatterns = [
     path("", views.main_page, name="main_page"),
-    path("home/", views.home, name="home"),
+    path("home/", views.Home.as_view(), name="home"),
     path("search/", views.search, name="search"),
     path("tasks/", views.Tasks.as_view(), name="tasks"),
     path("tasks/<int:task_id>", views.TaskDetail.as_view(), name="task_detail"),
