@@ -1,12 +1,14 @@
-# TaskManager Project with Django
+# TaskManager
+🗄️🗃️ This is simple Taskmangager written by Django Framework 📌🗂️
 
 ## Overview
 This is the TaskManager project, a web application built with Django. It allows users to manage tasks efficiently.
 
 ## Features
-- Feature 1: Add, edit, and delete tasks.
-- Feature 2: Organize tasks into categories.
-- Feature 3: Set deadlines and reminders for tasks.
+- Authentication : Users can Register, Login and Logout
+- Managing Tasks : Users can Add, edit, and delete tasks.
+- Categorise Tasks : Organize tasks into different categories.
+- Deadline : Set deadlines and reminders for tasks.
 
 ## Installation and Setup
 1. Clone the repository:
