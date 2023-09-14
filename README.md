@@ -28,7 +28,7 @@ This is the TaskManager project, a web application built with Django. It allows 
     python manage.py runserver
     ```
     
-## Usage
+## ✅ Usage ✅
 After running the server, go to `http://127.0.0.1:8000/` in your browser. Here you can create, edit, and delete tasks.
 
 ## 🙌🏻 Contributing 🙌🏻
