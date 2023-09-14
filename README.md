@@ -1,16 +1,16 @@
-# TaskManager
-🗄️🗃️ This is simple Taskmangager written by Django Framework 📌🗂️
+# 📊📎 TaskManager 🗃️📌
+ This is simple Taskmangager written by Django Framework
 
 ## Overview
 This is the TaskManager project, a web application built with Django. It allows users to manage tasks efficiently.
 
 ## Features
-- Authentication : Users can Register, Login and Logout
-- Managing Tasks : Users can Add, edit, and delete tasks.
-- Categorise Tasks : Organize tasks into different categories.
-- Deadline : Set deadlines and reminders for tasks.
+- Authentication : Users can Register, Login and Logout. 🔐👨🏻‍💻
+- Managing Tasks : Users can Add, edit, and delete tasks.🖋️
+- Categorise Tasks : Organize tasks into different categories.🗂️
+- Deadline : Set deadlines and reminders for tasks.💬🕑
 
-## Installation and Setup
+## Installation and Setup ⛓️⚒️⚙️
 1. Clone the repository:
     ```bash
     git clone https://github.com/HosseinTahami/TaskManager.git
@@ -31,8 +31,8 @@ This is the TaskManager project, a web application built with Django. It allows 
 ## Usage
 After running the server, go to `http://127.0.0.1:8000/` in your browser. Here you can create, edit, and delete tasks.
 
-## Contributing
+## 🙌🏻 Contributing 🙌🏻
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-## License
+## 📑 License 📑
 [MIT](https://choosealicense.com/licenses/mit/)
