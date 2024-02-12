@@ -1,5 +1,4 @@
 from typing import Any
-from django.db import models
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from .models import Task, Category, Tag
@@ -138,7 +137,8 @@ def search_results(request):
         ).distinct()
         print(tasks)
         return render(
-            request, "search_results.html", {"results": tasks, "searched": searched}
+            request, "search_results.html", {
+                "results": tasks, "searched": searched}
         )
     else:
         return render(
