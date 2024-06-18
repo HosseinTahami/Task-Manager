@@ -13,6 +13,10 @@ class CustomUserCreationForm(forms.ModelForm):
     class Meta:
         model = CustomUser
         fields = ("username", "email")
+        help_texts = {
+            'username': None,
+
+        }
 
     def clean_confirm_password(self):
         cd = self.cleaned_data
